@@ -7,7 +7,7 @@ body, html {
   font-size: 100px;
 }
 
-.georgia_text {
-    font-family: 'Georgia', serif;
-    color: #2e614fd9
+.Logo {
+  width: 200px;
+  height: auto;
 }

@@ -1,18 +1,13 @@
+import React from 'react';
 import './App.css';
-import {useEffect, useState} from 'react';
-import axios from 'axios';
-
+import logo from './logo.png';
 
 function App() {
   return (
-    <div className = 'title georgia_text'>
-      boxd.ai
-      <div>
-        here is our project and we will be using soemthing something something
-      </div>
-      <div>
-        look here! put in your prompt we will use something to analyse ur words and eat shit!
-      </div>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} alt="logo" className="Logo" />
+      </header>
     </div>
   );
 }
