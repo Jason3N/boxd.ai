@@ -16,7 +16,6 @@ public class MovieController {
 
     @PostMapping("/movie")
     public Movie saveMovie(@RequestBody Movie movie){
-
         return employeeRepo.save(movie);
     }
 
@@ -25,9 +24,9 @@ public class MovieController {
         return employeeRepo.getMovieByID(movieID);
     }
 
-    @GetMapping("/movie/name/{name}")
-    public List<Movie> getMoviesByName(@PathVariable("name") String movieName){
-        return employeeRepo.getMovieByName(movieName);
+    @GetMapping("/movie/name/{title}")
+    public List<Movie> getMovieByTitle(@PathVariable("title") String title){
+        return employeeRepo.getMovieByTitle(title);
     }
 
     @DeleteMapping("/movie/{id}")

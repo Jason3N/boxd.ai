@@ -29,12 +29,12 @@ public class employeeRepo {
         return dynamoDBMapper.load(Movie.class, movieID);
     }
 
-    public List<Movie> getMovieByName(String firstName) {
+    public List<Movie> getMovieByTitle(String title) {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterConditionEntry("firstName",
+                .withFilterConditionEntry("title",
                         new Condition()
                                 .withComparisonOperator(ComparisonOperator.EQ)
-                                .withAttributeValueList(new AttributeValue().withS(firstName)));
+                                .withAttributeValueList(new AttributeValue().withS(title)));
 
         List<Movie> result = dynamoDBMapper.scan(Movie.class, scanExpression);
         return result;
