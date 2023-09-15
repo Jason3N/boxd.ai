@@ -6,6 +6,8 @@ import com.movierec.repositry.employeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class MovieController {
 
@@ -21,6 +23,11 @@ public class MovieController {
     @GetMapping("/movie/{id}")
     public Movie getMovie(@PathVariable("id") String movieID){
         return employeeRepo.getMovieByID(movieID);
+    }
+
+    @GetMapping("/movie/name/{name}")
+    public List<Movie> getMoviesByName(@PathVariable("name") String movieName){
+        return employeeRepo.getMovieByName(movieName);
     }
 
     @DeleteMapping("/movie/{id}")

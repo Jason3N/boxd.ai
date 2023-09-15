@@ -28,4 +28,8 @@ public class Movie {
     @DynamoDBAttribute
     private Department department;
 
+    public void setName(String name) {
+        this.firstName = name;
+    }
+
 }

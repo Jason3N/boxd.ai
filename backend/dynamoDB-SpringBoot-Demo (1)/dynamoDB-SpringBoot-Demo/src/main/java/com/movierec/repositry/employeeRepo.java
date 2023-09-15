@@ -1,12 +1,18 @@
 package com.movierec.repositry;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.movierec.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class employeeRepo {
@@ -21,6 +27,17 @@ public class employeeRepo {
 
     public Movie getMovieByID(String movieID){
         return dynamoDBMapper.load(Movie.class, movieID);
+    }
+
+    public List<Movie> getMovieByName(String firstName) {
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+                .withFilterConditionEntry("firstName",
+                        new Condition()
+                                .withComparisonOperator(ComparisonOperator.EQ)
+                                .withAttributeValueList(new AttributeValue().withS(firstName)));
+
+        List<Movie> result = dynamoDBMapper.scan(Movie.class, scanExpression);
+        return result;
     }
 
     public String  delete(String movieID){
