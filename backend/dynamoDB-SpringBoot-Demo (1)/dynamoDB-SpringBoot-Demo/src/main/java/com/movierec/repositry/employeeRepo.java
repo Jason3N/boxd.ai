@@ -1,9 +1,6 @@
 package com.movierec.repositry;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
@@ -37,6 +34,13 @@ public class employeeRepo {
                                 .withAttributeValueList(new AttributeValue().withS(title)));
 
         List<Movie> result = dynamoDBMapper.scan(Movie.class, scanExpression);
+        return result;
+    }
+
+    public List<Movie> first20Movies() {
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
+                .withLimit(20);
+        PaginatedList<Movie> result = dynamoDBMapper.scan(Movie.class, scanExpression);
         return result;
     }
 

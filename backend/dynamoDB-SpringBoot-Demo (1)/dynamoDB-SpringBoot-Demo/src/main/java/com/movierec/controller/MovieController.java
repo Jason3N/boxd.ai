@@ -24,10 +24,17 @@ public class MovieController {
         return employeeRepo.getMovieByID(movieID);
     }
 
-    @GetMapping("/movie/name/{title}")
-    public List<Movie> getMovieByTitle(@PathVariable("title") String title){
+    @GetMapping("/movie/name")
+    public List<Movie> getMovieByTitle(@RequestParam("title") String title){
         return employeeRepo.getMovieByTitle(title);
     }
+
+    @GetMapping("/movie/data/")
+    public List<Movie> getDataset(){
+        return employeeRepo.first20Movies();
+    }
+
+    @GetMapping
 
     @DeleteMapping("/movie/{id}")
     public String deleteMovie(@PathVariable("id") String movieID){
