@@ -41,6 +41,9 @@ public class employeeRepo {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
                 .withLimit(20);
         PaginatedList<Movie> result = dynamoDBMapper.scan(Movie.class, scanExpression);
+        if(result.size() > 20){
+            return result.subList(0, 20);
+        }
         return result;
     }
 

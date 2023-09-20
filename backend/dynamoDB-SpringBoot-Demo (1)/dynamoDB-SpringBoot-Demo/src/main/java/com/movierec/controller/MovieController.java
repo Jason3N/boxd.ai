@@ -29,6 +29,7 @@ public class MovieController {
         return employeeRepo.getMovieByTitle(title);
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/movie/data/")
     public List<Movie> getDataset(){
         return employeeRepo.first20Movies();
