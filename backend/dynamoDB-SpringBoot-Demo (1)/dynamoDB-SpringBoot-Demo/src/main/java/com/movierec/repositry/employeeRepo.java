@@ -39,10 +39,10 @@ public class employeeRepo {
 
     public List<Movie> first20Movies() {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withLimit(20);
+                .withLimit(10);
         PaginatedList<Movie> result = dynamoDBMapper.scan(Movie.class, scanExpression);
-        if(result.size() > 20){
-            return result.subList(0, 20);
+        if(result.size() > 10){
+            return result.subList(0, 10);
         }
         return result;
     }
