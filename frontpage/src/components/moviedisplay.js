@@ -29,10 +29,10 @@ function MovieDisplay() {
             {movieTitles.map((title, index) => (
                 <Grid item lg={4} key={index}>
                         <CardMedia
-                                    component="img"
-                                    height="280"
-                                    width="100"
-                                    sx={{ borderRadius: '22px' }}
+                                component="img"
+                                height="280"
+                                width="100"
+                                sx={{ borderRadius: '22px' }}
                                 />
                         <Card style={{ borderRadius: '22px' }}>
                             <Typography variant="h6" component="div" sx={{ fontFamily: 'Georgia, serif', textDecoration: 'none', textAlign: 'center' }}>
